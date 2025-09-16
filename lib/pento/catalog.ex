@@ -88,8 +88,6 @@ defmodule Pento.Catalog do
     |> Repo.update()
   end
 
-
-
   @doc """
   Deletes a product.
 

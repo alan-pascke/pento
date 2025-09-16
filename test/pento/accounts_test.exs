@@ -69,7 +69,10 @@ defmodule Pento.AccountsTest do
 
     test "validates maximum values for email and password for security" do
       too_long = String.duplicate("db", 100)
-      {:error, changeset} = Accounts.register_user(%{email: too_long, password: too_long, username: too_long})
+
+      {:error, changeset} =
+        Accounts.register_user(%{email: too_long, password: too_long, username: too_long})
+
       assert "should be at most 72 character(s)" in errors_on(changeset).password
       assert "should be at most 30 character(s)" in errors_on(changeset).username
     end
