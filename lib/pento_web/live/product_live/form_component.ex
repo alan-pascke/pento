@@ -11,7 +11,7 @@ defmodule PentoWeb.ProductLive.FormComponent do
         {@title}
         <:subtitle>Use this form to manage product records in your database.</:subtitle>
       </.header>
-
+      
       <.simple_form
         for={@form}
         id="product-form"
@@ -23,9 +23,7 @@ defmodule PentoWeb.ProductLive.FormComponent do
         <.input field={@form[:description]} type="text" label="Description" />
         <.input field={@form[:unit_price]} type="number" label="Unit price" step="any" />
         <.input field={@form[:sku]} type="number" label="Sku" />
-        <:actions>
-          <.button phx-disable-with="Saving...">Save Product</.button>
-        </:actions>
+        <:actions><.button phx-disable-with="Saving...">Save Product</.button></:actions>
       </.simple_form>
     </div>
     """
@@ -38,7 +36,18 @@ defmodule PentoWeb.ProductLive.FormComponent do
      |> assign(assigns)
      |> assign_new(:form, fn ->
        to_form(Catalog.change_product(product))
-     end)}
+     end)
+     |> allow_upload(
+       :image,
+       accept: ~w(.jpg .jpeg .png),
+       max_entries: 1,
+       max_file_size: 9_000_000,
+       auto_upload: true
+     )}
+  end
+
+  defp assign_form(socket, %Ecto.Changeset{} = changeset) do
+    assign(socket, :form, to_form(changeset))
   end
 
   @impl true
