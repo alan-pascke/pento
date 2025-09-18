@@ -18,6 +18,7 @@ defmodule Pento.Catalog.Product do
     product
     |> cast(attrs, [:name, :description, :unit_price, :sku, :image_upload])
     |> validate_required([:name, :description, :unit_price, :sku])
+    |> validate_length(:sku, is: 6) #verificar
     |> unique_constraint(:sku)
     |> validate_number(:unit_price, greater_than: 0.0)
   end
@@ -25,4 +26,5 @@ defmodule Pento.Catalog.Product do
   def decrease_unit_price(%Product{} = product, value_to_subtract) do
     change(product, unit_price: product.unit_price - value_to_subtract)
   end
+
 end
