@@ -32,7 +32,12 @@ defmodule PentoWeb.ProductLive.FormComponent do
       </.simple_form>
 
       <%= for image <- @uploads.image.entries do %>
-        <div class="mt-4"><.live_img_preview entry={image} width="60" /></div>
+        <div class="mt-4">
+          <%= if length(@uploads.image.errors) > 0 do %>
+            <.button phx-target={@myself} phx-click="delete-image">x</.button>
+          <% end %>
+           <.live_img_preview entry={image} width="60" />
+        </div>
          <progress value={image.progress} max="100" />
         <%= for err <- upload_errors(@uploads.image, image) do %>
           <.error>{err}</.error>
