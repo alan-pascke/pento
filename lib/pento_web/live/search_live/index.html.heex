@@ -1,0 +1,16 @@
+<.header>
+  <div>
+    <h1>Search for a Product</h1>
+    
+    <.simple_form
+      for={@form}
+      id="search-form"
+      phx-change="validate"
+      phx-submit="search"
+    >  
+      <div><.input field={@form[:sku]} type="text" label="SKU" phx-debounce="blur" /></div>
+      
+      <:actions><.button type="submit">Search</.button></:actions>
+    </.simple_form>
+  </div>
+</.header>
