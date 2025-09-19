@@ -1,7 +1,10 @@
 defmodule Pento.Catalog.Product do
   alias Pento.Catalog.Product
-  use Ecto.Schema
+  alias Pento.Survey.Rating
+
   import Ecto.Changeset
+
+  use Ecto.Schema
 
   schema "products" do
     field :name, :string
@@ -11,6 +14,8 @@ defmodule Pento.Catalog.Product do
     field :image_upload, :string
 
     timestamps(type: :utc_datetime)
+
+    has_many :ratings, Rating
   end
 
   @doc false
@@ -28,7 +33,7 @@ defmodule Pento.Catalog.Product do
   end
 
   # validate if field contains a specific number of digits
-  defp validate_digits(changeset, field ,digits) do
+  defp validate_digits(changeset, field, digits) do
     validate_change(changeset, field, fn _, value ->
       field_str = Integer.to_string(value)
 
