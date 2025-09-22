@@ -43,12 +43,19 @@ defmodule PentoWeb.UserSettingsLive do
           phx-submit="update_password"
           phx-trigger-action={@trigger_submit}
         >
-          <input
+          <.input
             name={@password_form[:email].name}
-            type="hidden"
+            class="hidden"
             id="hidden_user_email"
             value={@current_email}
           />
+          <.input
+            name={@password_form[:username].name}
+            class="hidden"
+            id="hidden_user_username"
+            value={@current_user.username}
+          />
+
           <.input field={@password_form[:password]} type="password" label="New password" required />
           <.input
             field={@password_form[:password_confirmation]}

@@ -7,7 +7,11 @@ defmodule Pento.CatalogFixtures do
   @doc """
   Generate a unique product sku.
   """
-  def unique_product_sku, do: System.unique_integer([:positive])
+  def random_sku do
+    :rand.uniform(999_999)
+    |> Integer.to_string()
+    |> String.pad_leading(6, "0")
+  end
 
   @doc """
   Generate a product.
@@ -18,7 +22,7 @@ defmodule Pento.CatalogFixtures do
       |> Enum.into(%{
         description: "some description",
         name: "some name",
-        sku: unique_product_sku(),
+        sku: 986_597,
         unit_price: 120.5
       })
       |> Pento.Catalog.create_product()

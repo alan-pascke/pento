@@ -82,7 +82,8 @@ defmodule Pento.SurveyTest do
       valid_attrs = %{
         stars: 4,
         user_id: user_fixture().id,
-        product_id: product_fixture().id
+        product_id: product_fixture().id,
+        sku: 123659
       }
 
       assert {:ok, %Rating{} = rating} = Survey.create_rating(valid_attrs)

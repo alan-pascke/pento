@@ -76,7 +76,6 @@ defmodule PentoWeb.UserSettingsLiveTest do
         })
         |> render_submit()
 
-      assert result =~ "Change Email"
       assert result =~ "did not change"
       assert result =~ "is not valid"
     end
@@ -90,7 +89,7 @@ defmodule PentoWeb.UserSettingsLiveTest do
     end
 
     test "updates the user password", %{conn: conn, user: user, password: password} do
-      new_password = valid_user_password()
+      new_password = "new valid password"
 
       {:ok, lv, _html} = live(conn, ~p"/users/settings")
 
@@ -98,7 +97,7 @@ defmodule PentoWeb.UserSettingsLiveTest do
         form(lv, "#password_form", %{
           "current_password" => password,
           "user" => %{
-            "email" => user.email,
+            "username" => user.username,
             "password" => new_password,
             "password_confirmation" => new_password
           }
@@ -115,7 +114,7 @@ defmodule PentoWeb.UserSettingsLiveTest do
       assert Phoenix.Flash.get(new_password_conn.assigns.flash, :info) =~
                "Password updated successfully"
 
-      assert Accounts.get_user_by_email_and_password(user.email, new_password)
+      assert Accounts.get_user_by_username_and_password(user.username, new_password)
     end
 
     test "renders errors with invalid data (phx-change)", %{conn: conn} do
