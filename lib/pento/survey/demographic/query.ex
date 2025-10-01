@@ -9,7 +9,7 @@ defmodule Pento.Survey.Demographic.Query do
 
   def for_user(query \\ base(), user) do
     query
-    |> where([d], d.user == ^user.id)
+    |> where([d], d.user_id == ^user.id)
   end
 end
 
