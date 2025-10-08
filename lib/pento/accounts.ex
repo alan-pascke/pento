@@ -94,6 +94,10 @@ defmodule Pento.Accounts do
       iex> change_user_registration(user)
       %Ecto.Changeset{data: %User{}}
 
+      if you want to change the username
+      iex> change_user_registration(user, %{username: "new username"})
+      %Ecto.Changeset{data: %User{}}
+
   """
   def change_user_registration(%User{} = user, attrs \\ %{}) do
     User.registration_changeset(
