@@ -35,7 +35,7 @@ defmodule Pento.Catalog do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id), do: Repo.get!(Product, id) 
+  def get_product!(id), do: Repo.get!(Product, id)
 
   @doc """
   Creates a product.
@@ -119,6 +119,21 @@ defmodule Pento.Catalog do
 
   def list_products_with_user_rating(user) do
     Product.Query.with_user_ratings(user)
+    |> Repo.all()
+  end
+
+
+  @doc """
+  Returns the list of products with average ratings.
+
+  ## Examples
+
+      iex> products_with_average_ratings()
+      [{"Chess ", 5.0}, {"Tic-Tac-Toe", 3.7}, {"Table Tennis", 4.0}]
+
+  """
+  def products_with_average_ratings do
+    Product.Query.with_average_ratings()
     |> Repo.all()
   end
 end
