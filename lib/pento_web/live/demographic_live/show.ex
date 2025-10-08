@@ -5,23 +5,17 @@ defmodule PentoWeb.DemographicLive.Show do
   alias PentoWeb.CoreComponents
 
   attr :demographic, Demographic, required: true
+
   def details(assigns) do
-    {IO.inspect(assigns)}
     ~H"""
     <div>
       <h2 class="font-medium text-2xl">Demographics {raw("&#x2713;")}</h2>
-
+      
       <CoreComponents.table rows={[@demographic]} id="demographics">
         <:col :let={demographic} label="Gender">{demographic.gender}</:col>
-
+        
         <:col :let={demographic} label="Year of birth">{demographic.year_of_birth}</:col>
       </CoreComponents.table>
-      
-      
-      
-      
-      
-
     </div>
     """
   end

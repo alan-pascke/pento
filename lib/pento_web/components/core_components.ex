@@ -366,6 +366,21 @@ defmodule PentoWeb.CoreComponents do
     """
   end
 
+  def input(%{type: "rating"} = assigns) do
+    ~H"""
+    <select
+      id={@id}
+      name={@name}
+      class="border focus:ring-zinc-500"
+      multiple={@multiple}
+      {@rest}
+    >
+      <option :if={@prompt} value="">{@prompt}</option>
+      {Phoenix.HTML.Form.options_for_select(@options, @value)}
+    </select>
+    """
+  end
+
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def input(assigns) do
     ~H"""
