@@ -16,19 +16,19 @@ products = [
   %{
     name: "Chess",
     description: "The classic strategy game",
-    sku: 567891,
+    sku: 567_891,
     unit_price: 10.00
   },
   %{
     name: "Tic-Tac-Toe",
     description: "The game of Xs and Os",
-    sku: 111213,
+    sku: 111_213,
     unit_price: 3.00
   },
   %{
     name: "Table Tennis",
     description: "Bat the ball back and forth. Don't miss!",
-    sku: 152223,
+    sku: 152_223,
     unit_price: 12.00
   }
 ]
