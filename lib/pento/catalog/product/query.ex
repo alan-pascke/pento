@@ -47,6 +47,7 @@ defmodule Pento.Catalog.Product.Query do
   end
 
   def filter_by_age_group(query \\ base(), filter) do
+    IO.inspect(query, filter)
     query
     |> apply_age_group_filter(filter)
   end
