@@ -1,3 +1,5 @@
+A study project using Phoenix LiveView
+
 # Pento
 
 To start your Phoenix server:
