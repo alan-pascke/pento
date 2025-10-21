@@ -10,11 +10,8 @@
       phx-submit="save"
     >
       <.input field={@form[:first_name]} type="text" label="First Name" />
-      <.input field={@form[:email]} type="email" label="Email" phx-debounce="blur"/>
-
-      <:actions>
-        <.button phx-disable-with="Sending...">Send Promo</.button>
-      </:actions>
+      <.input field={@form[:email]} type="email" label="Email" phx-debounce="blur" />
+      <:actions><.button phx-disable-with="Sending...">Send Promo</.button></:actions>
     </.simple_form>
   </div>
 </.header>

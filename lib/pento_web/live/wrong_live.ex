@@ -19,7 +19,7 @@ defmodule PentoWeb.WrongLive do
     <h1 class="mb-4 text-4xl font-extrabold">Your score: {@score}</h1>
 
     <h2>It's {@time} <br /> {@message}</h2>
-     <br />
+    <br />
     <h2>
       <%= for n <- 1..10 do %>
         <.link
@@ -32,7 +32,7 @@ defmodule PentoWeb.WrongLive do
         </.link>
       <% end %>
     </h2>
-     <br />
+    <br />
     <pre>
       {@current_user.username}
       {@session_id}

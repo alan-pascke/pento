@@ -102,7 +102,6 @@ defmodule Pento.Survey do
     Demographic.changeset(demographic, attrs)
   end
 
-
   @doc """
   Gets the demographic for a user.
 

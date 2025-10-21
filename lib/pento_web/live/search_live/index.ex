@@ -4,12 +4,10 @@ defmodule PentoWeb.SearchLive.Index do
   alias Pento.Search.Products
 
   def mount(_params, _session, socket) do
-
     {:ok,
      socket
      |> assign(:product, %Products{})
      |> clear_form()}
-
   end
 
   def clear_form(socket) do
@@ -25,10 +23,10 @@ defmodule PentoWeb.SearchLive.Index do
   end
 
   def handle_event(
-    "validate",
-    %{"products" => product_params},
-    %{assigns: %{product: product}} = socket
-  ) do
+        "validate",
+        %{"products" => product_params},
+        %{assigns: %{product: product}} = socket
+      ) do
     changeset =
       product
       |> Search.change_product(product_params)

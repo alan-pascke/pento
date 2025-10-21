@@ -12,5 +12,3 @@ defmodule Pento.Survey.Demographic.Query do
     |> where([d], d.user_id == ^user.id)
   end
 end
-
-

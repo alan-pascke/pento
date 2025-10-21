@@ -132,7 +132,7 @@ defmodule Pento.Catalog do
 
   """
   def products_with_average_ratings(%{
-        age_group_filter: age_group_filter,
+        age_group_filter: age_group_filter
       }) do
     Product.Query.with_average_ratings()
     |> Product.Query.join_users()

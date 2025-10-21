@@ -1,5 +1,6 @@
 defmodule Pento.SurveyFixtures do
   import Pento.{AccountsFixtures, CatalogFixtures}
+
   @moduledoc """
   This module defines test helpers for creating
   entities via the `Pento.Survey` context.

@@ -4,6 +4,8 @@ defmodule Pento.Catalog.Product.Query do
   alias Pento.Survey.{Rating, Demographic}
   alias Pento.Accounts.User
 
+  @genders ["male", "female", "other", "prefer not to say"]
+
   def base, do: Product
 
   def with_user_ratings(user) do
@@ -46,13 +48,7 @@ defmodule Pento.Catalog.Product.Query do
     |> join(:left, [p, r, u, d], d in Demographic, on: d.user_id == u.id)
   end
 
-  def filter_by_age_group(query \\ base(), filter) do
-    IO.inspect(query, filter)
-    query
-    |> apply_age_group_filter(filter)
-  end
 
-  @genders ["male", "female", "other", "prefer not to say"]
 
   def filter_by_gender_group(query \\ base(), filter) do
     query
@@ -66,6 +62,13 @@ defmodule Pento.Catalog.Product.Query do
     else
       query
     end
+  end
+
+  def filter_by_age_group(query \\ base(), filter) do
+    IO.inspect({"aqui", query, filter})
+
+    query
+    |> apply_age_group_filter(filter)
   end
 
   defp apply_age_group_filter(query, "18 and under") do
